@@ -22,6 +22,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=pgsql
       - DATABASE_URL=postgres://database
+    stdin_open: true
+    tty: true
       
 volumes:
   db_data:
