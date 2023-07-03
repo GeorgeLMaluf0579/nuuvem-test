@@ -5,10 +5,10 @@ RUN apk --update add --virtual build-dependencies build-base postgresql-dev linu
 RUN apk --update add libpq bash libxml2 libxml2-dev libxml2-utils libxslt openssl zlib git \
         libc6-compat gcompat libass netcat-openbsd less shared-mime-info tzdata
 
-RUN mkdir /api
-WORKDIR /api
-ADD Gemfile /api/
-ADD Gemfile.lock /api/
+RUN mkdir /back
+WORKDIR /back
+ADD Gemfile /back/
+ADD Gemfile.lock /back/
 RUN bundle install
 ADD . /api/
 COPY ./scripts/entrypoint.sh /usr/bin/entrypoint.sh
