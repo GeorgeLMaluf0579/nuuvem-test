@@ -19,26 +19,26 @@ const OrderList: React.FC = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="font-sans container mx-auto p-4">
       <h1 className="text-2xl mb-4">Orders list</h1>
-      <table>
+      <table className="table-auto border-spacing-2">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Importado em</th>
-            <th>Valor Total</th>
+            <th className="text-left border border-slate-300">Id</th>
+            <th className="text-center border border-slate-300">Importado em</th>
+            <th className="text-center border border-slate-300">Valor Total</th>
           </tr>
         </thead>
         <tbody>
           {orders && orders.map((order:any) => (
             <tr key={order.id}>
-              <td>
+              <td className="text-left border border-slate-300">
                 {order.id}
               </td>
-              <td>
+              <td className="text-center border border-slate-300">
                 {format(new Date(order.created_at), 'dd/MM/yyyy hh:mm:ss')}
               </td>
-              <td>
+              <td className="text-center border border-slate-300">
                 {order.value}
               </td>
             </tr>
