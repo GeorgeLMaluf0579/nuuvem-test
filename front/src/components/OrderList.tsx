@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { format } from 'date-fns';
 
 const OrderList: React.FC = () => {
   const [orders, setOrders] = useState([]);
@@ -20,13 +21,30 @@ const OrderList: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl mb-4">Orders list</h1>
-      <ul>
-        { orders && orders.map((order: any) => (
-          <li key={order.id} className="border-b py-2">
-            {order.created_at}
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Importado em</th>
+            <th>Valor Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders && orders.map((order:any) => (
+            <tr key={order.id}>
+              <td>
+                {order.id}
+              </td>
+              <td>
+                {format(new Date(order.created_at), 'dd/MM/yyyy hh:mm:ss')}
+              </td>
+              <td>
+                {order.value}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
