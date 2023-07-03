@@ -18,6 +18,17 @@ module Api
         end
       end
 
+      def create
+        order_file = params[:file]
+
+        unless order_file.present?
+          render json: { error: 'No file uploaded'}, status: :unprocessable_entity
+        else
+          # do somenthing
+          render json: { message: 'File uploaded' }, status: :ok
+        end
+      end
+
       private
 
       def find_order
