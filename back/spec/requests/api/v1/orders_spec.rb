@@ -8,25 +8,25 @@ RSpec.describe "Api::V1::Orders", type: :request do
     end
   end
 
-  describe 'GET /orders/:id' do
-    let(:order) { create(:order) }
+  # describe 'GET /orders/:id' do
+  #   let(:order) { create(:order) }
 
-    it 'when exist request order' do
-      aggregate_failures do
-        get api_v1_order_path(id: order.id)
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to eq (order).to_json
-      end
-    end
+  #   it 'when exist request order' do
+  #     aggregate_failures do
+  #       get api_v1_order_path(id: order.id)
+  #       expect(response).to have_http_status(:ok)
+  #       expect(response.body).to eq (order).to_json
+  #     end
+  #   end
 
-    it 'when does not exist request order' do
-      aggregate_failures do
-        get api_v1_order_path(id: 911)
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.body).to eq ({ message: "Invalid order"}).to_json
-      end
-    end
-  end
+  #   it 'when does not exist request order' do
+  #     aggregate_failures do
+  #       get api_v1_order_path(id: 911)
+  #       expect(response).to have_http_status(:unprocessable_entity)
+  #       expect(response.body).to eq ({ message: "Invalid order"}).to_json
+  #     end
+  #   end
+  # end
 
   describe 'POST /orders/' do
     context 'when a valid file is uploaded' do

@@ -22,7 +22,8 @@ module Api
         order_file = params[:file]
 
         if order_file.present?
-          order_parser = OrderFileParser.new(order_file).call
+          order_parser = OrderFileParser.new(order_file)
+          order_parser.call
           if order_parser.order.value.zero?
             render json: { message: 'Unformated file' }, status: :unprocessable_entity
           else
