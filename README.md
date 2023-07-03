@@ -1,13 +1,26 @@
 # Nuuvem Test Web 1
-Details in file challenge.md
+This solutions is a suggestion to solve from Nuuvem Inc. [code challenge](./CHALLENGE.md)
 
-# Tecnologies
+The solution is splited into two parts:
+* Backend
+* Frontend 
 
-# Setup
+Both are in respective docker containers and work together as one.
 
-# How to execute
+## 🧪 Technologies
+This solution was developed using the following technologies:
+- [Docker](https://www.docker.com)
+- [Ruby](https://www.ruby-lang.org/)
+- [Rails](https://rubyonrails.org/)
+- [PostgreSQL](https://www.postgresql.org)
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [RSpec](https://rspec.info)
 
-# Automated Testing and code coverage
+## 📦 Setup
 
+## 🏎 How to execute
 
-# Autor
+## 🤖 Automated Testing and Code coverage
+
+## 👨🏻‍💻 Autor
