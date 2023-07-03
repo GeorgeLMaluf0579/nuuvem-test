@@ -6,25 +6,23 @@ module Api
       before_action :find_order, only: %i[show]
 
       def index
-        @orders = Order.all.order(id: :desc)
+        @orders = OrdersService.new.list_orders
         render json: @orders, status: :ok
       end
 
       def show
-        if @order.blank?
-          render json: { message: 'Invalid order' }, status: :unprocessable_entity
-        else
-          render json: @order, status: :ok
-        end
+#        if @order.blank?
+#          render json: { message: 'Invalid order' }, status: :unprocessable_entity
+#        else
+#          render json: @order, status: :ok
+#        end
       end
 
       def create
         order_file = params[:file]
 
         if order_file.present?
-          
-          order_parser = OrderFileParser.new(order_file)
-          order_parser.call
+          order_parser = OrderFileParser.new(order_file).call
           if order_parser.order.value.zero?
             render json: { message: 'Unformated file' }, status: :unprocessable_entity
           else
