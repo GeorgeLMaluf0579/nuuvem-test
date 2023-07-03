@@ -29,7 +29,7 @@ RSpec.describe "Api::V1::Orders", type: :request do
   end
 
   describe 'POST /orders/' do
-    context 'when a file is uploaded' do
+    context 'when a valid file is uploaded' do
       let(:file) { fixture_file_upload('input.txt', 'text/plain') }
 
       before do
@@ -40,6 +40,21 @@ RSpec.describe "Api::V1::Orders", type: :request do
         aggregate_failures do
           expect(response).to have_http_status(:ok)
           expect(response.body).to eq ({ message: 'File uploaded' }).to_json
+        end
+      end
+    end
+
+    context 'when a unformated file is uploded' do
+      let(:file) { fixture_file_upload('unformated.txt', 'text/plain') }
+
+      before do
+        post api_v1_orders_path, params: { file: file }
+      end
+
+      it 'expected response and unformated message' do
+        aggregate_failures do
+          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response.body).to eq ({message: 'Unformated file'}).to_json
         end
       end
     end

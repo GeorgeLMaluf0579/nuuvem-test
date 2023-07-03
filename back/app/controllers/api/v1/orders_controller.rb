@@ -21,11 +21,17 @@ module Api
       def create
         order_file = params[:file]
 
-        unless order_file.present?
-          render json: { error: 'No file uploaded'}, status: :unprocessable_entity
+        if order_file.present?
+          
+          order_parser = OrderFileParser.new(order_file)
+          order_parser.call
+          if order_parser.order.value.zero?
+            render json: { message: 'Unformated file' }, status: :unprocessable_entity
+          else
+            render json: { message: 'File uploaded' }, status: :ok
+          end
         else
-          # do somenthing
-          render json: { message: 'File uploaded' }, status: :ok
+          render json: { error: 'No file uploaded' }, status: :unprocessable_entity
         end
       end
 
