@@ -10,7 +10,7 @@ WORKDIR /back
 ADD Gemfile /back/
 ADD Gemfile.lock /back/
 RUN bundle install
-ADD . /api/
+ADD . /back/
 COPY ./scripts/entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 

@@ -1,6 +1,7 @@
 #BUILD
 docker-build:
 	docker-compose build
+	docker-compose run --rm front npm install
 
 docker-build-no-cache:
 	docker-compose build --no-cache
