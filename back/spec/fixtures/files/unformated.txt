@@ -1,0 +1,2 @@
+purchaser name 	item description	item price	purchase count	merchant address	merchant name
+João Silva	R$15 off US30 of Pizza  asd asd 987 Fake St Bob's Pizza
